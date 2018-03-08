@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Header from './components/Header';
 import AllArticles from './components/AllArticles';
+import SingleArticle from './components/SingleArticle';
 import './App.css';
 
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
         <Header></Header>
         <Switch>
         <Route exact path = '/api/topics/:topic/articles' component={AllArticles} />
+        <Route path = '/api/articles/:article_id' component={SingleArticle} />
         <Route path = '/api/articles' component={AllArticles} />
         </Switch>
         <div className="App">
