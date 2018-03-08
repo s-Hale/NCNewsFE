@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Open-sans, sans-serif;
+}
+
+/* header component */
+
+.headerWrapper {
+  border: 1px dotted darkslategray;
+}
+
+#mainTitle {
+font-family: Montserrat;
+font-weight: 600;
+color: slategray;  
+}
+
+#mainSubtitle {
+  font-family: Montserrat;
+  font-weight:400;
+  letter-spacing: 2px;
+  color: lightslategray;   
+}
