@@ -11,6 +11,7 @@ class App extends Component {
       <div>
         <Header></Header>
         <Switch>
+        <Route exact path = '/api/topics/:topic/articles' component={AllArticles} />
         <Route path = '/api/articles' component={AllArticles} />
         </Switch>
         <div className="App">

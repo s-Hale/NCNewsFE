@@ -8,10 +8,13 @@ class AllArticles extends React.Component {
   }
 
   componentDidMount () {
-    fetchArticles().then(({allArticles}) => {
-      this.setState({
-        articles: allArticles
-      })
+    let topic = this.props.match.params.topic;
+    fetchArticles(topic).then((articles) => {
+      if(topic) {
+        this.setState({ articles: articles.articles})
+      } else {
+        this.setState({ articles: articles.allArticles})
+      }
     })
   }
 
