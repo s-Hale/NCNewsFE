@@ -4,7 +4,7 @@
 }
 
 body {
-  font-family: Open-sans, sans-serif;
+  font-family: Courier, sans-serif;
 }
 
 /* header component */
@@ -15,7 +15,7 @@ body {
 
 #mainTitle {
 font-family: Montserrat;
-font-weight: 600;
+font-weight: 400;
 color: slategray;  
 }
 
@@ -24,4 +24,39 @@ color: slategray;
   font-weight:400;
   letter-spacing: 2px;
   color: lightslategray;   
+}
+
+/* allArticlesArea */
+
+.allArticleAreaWrap {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  border: 3px solid purple;
+}
+
+.allArticleArea {
+  border: 1px solid blue;
+  width: 60%;
+}
+
+.indivArticleTitle {
+  font-family: Josefin Sans, sans-serif;
+  font-weight:400;
+  letter-spacing: 2px;
+  color: rgb(38, 62, 87);  
+}
+
+.indivArticleAuthor {
+  font-family: Lato, sans-serif;
+  font-size: 0.9em;
+  letter-spacing: 3px;
+  padding: 0.3em 0em 1em 0em;
+  color: rgb(101, 101, 102);
+}
+
+.indivArticleSnippet {
+  font-family: Lato, sans-serif;
+  letter-spacing: 0.8px;
+  color: rgb(101, 101, 102);
 }
