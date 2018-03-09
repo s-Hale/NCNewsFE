@@ -1,6 +1,7 @@
 
 import React from 'react';
 import {fetchArticles} from '../api';
+import { Link } from 'react-router-dom';
 
 class AllArticles extends React.Component {
   state = {
@@ -25,10 +26,13 @@ class AllArticles extends React.Component {
           {this.state.articles.map((article, i) => {
             return (
               <div className='eachIndivArticle' key={i}>
+              <Link to={`/api/articles/${article._id}`}>
                 <h1 className='indivArticleTitle'>{article.title}</h1>
-                <p className='indivArticleAuthor'>{article.created_by}</p>
+                <Link to={`/api/users/${article.created_by}`}><p className='indivArticleAuthor'>{article.created_by}</p>
+                </Link>
                 <div className='indivArticleSnippet'>{article.body.substring(0, 250) + ' ... [read more]'}
                 </div>
+                </Link >
               </div>
             )
           })}
@@ -37,5 +41,6 @@ class AllArticles extends React.Component {
     )
   }
 }
+
 
 export default AllArticles;

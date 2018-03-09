@@ -1,6 +1,7 @@
 
 import React from 'react';
 import {fetchArticleById} from '../api';
+import { Link } from 'react-router-dom';
 
 class SingleArticle extends React.Component {
   state = {
@@ -25,9 +26,9 @@ class SingleArticle extends React.Component {
       <div className='singleArticleAreaWrap'>
        <div className='singleArticleArea'>
             <h2 className='singleArticleTitle'>{this.state.article.title}</h2>
-            {/* <Link id='articleUsername' to={`/api/users/${this.state.article.created_by}`}>by: {this.state.article.created_by} </Link > */}
             <article className='singleArticleBody'>{this.state.article.body}</article>
-            <p className='singleArticleAuthor'>{this.state.article.created_by}</p>
+            <Link id='articleUsername' to={`/api/users/${this.state.article.created_by}`}><p className='singleArticleAuthor'>{this.state.article.created_by}</p>
+            </Link >
             <p className='singleArticleTag'>{this.state.article.belongs_to}</p>
             <p className='singleArticleVoteCount'>{this.state.article.votes}</p>
         </div>
