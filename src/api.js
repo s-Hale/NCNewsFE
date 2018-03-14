@@ -1,22 +1,25 @@
-
-export const fetchArticles = (topic) => {
-  if(topic) {
-    return fetch(`http://localhost:9090/api/topics/${topic}/articles`)
-      .then(res => res.json())
+export const fetchArticles = topic => {
+  if (topic) {
+    return fetch(`http://localhost:9090/api/topics/${topic}/articles`).then(
+      res => res.json()
+    );
   } else {
-    return fetch(`http://localhost:9090/api/articles`)
-      .then(res => res.json())
+    return fetch(`http://localhost:9090/api/articles`).then(res => res.json());
   }
-}
+};
 
-export const fetchArticleById = (articleID) => {
-  console.log(articleID)
-  return fetch(`http://localhost:9090/api/articles/${articleID}`)
-    .then(res => res.json())
-}
+export const fetchArticleById = articleID => {
+  return fetch(`http://localhost:9090/api/articles/${articleID}`).then(res =>
+    res.json()
+  );
+};
 
 export const fetchUserInfo = userInfo => {
-  return fetch(`http://localhost:9090/api/users/${userInfo}`)
-  .then(res => res.json());
-}
+  return fetch(`http://localhost:9090/api/users/${userInfo}`).then(res =>
+    res.json()
+  );
+};
 
+export const fetchTopics = () => {
+  return fetch("http://localhost:9090/api/topics").then(res => res.json());
+};

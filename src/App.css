@@ -14,16 +14,11 @@ body {
 }
 
 #mainTitle {
-font-family: Montserrat;
-font-weight: 400;
-color: slategray;  
-}
-
-#mainSubtitle {
   font-family: Montserrat;
-  font-weight:400;
-  letter-spacing: 2px;
-  color: lightslategray;   
+  font-size: 3.5em;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: slategray;
 }
 
 /* allArticlesArea */
@@ -37,14 +32,24 @@ color: slategray;
 
 .allArticleArea {
   border: 1px solid blue;
-  width: 60%;
+  display: flex;
+  justify-content: flex-start space-evenly;
+  flex-flow: row wrap;
+  width: 95%;
+}
+
+.eachIndivArticle {
+  border: 1px dotted darkslategray;
+  width: 25%;
+  padding: 1em;
+  margin: 1em 0em 1em 0em;
 }
 
 .indivArticleTitle {
   font-family: Montserrat, sans-serif;
-  font-weight:400;
+  font-weight: 400;
   letter-spacing: 2px;
-  color: rgb(38, 62, 87);  
+  color: rgb(83, 75, 104);
 }
 
 .indivArticleAuthor {
@@ -73,13 +78,14 @@ color: slategray;
 .singleArticleArea {
   border: 1px solid blue;
   width: 60%;
+  padding: 1em;
 }
 
 .singleArticleTitle {
   font-family: Montserrat, sans-serif;
-  font-weight:400;
+  font-weight: 400;
   letter-spacing: 2px;
-  color: lightslategray;   
+  color: rgb(83, 75, 104);
 }
 
 .singleArticleBody {
@@ -99,6 +105,11 @@ color: slategray;
 .singleArticleTag {
   font-family: Lato, sans-serif;
   font-size: 1.2em;
+  border: 1px dotted rgb(47, 47, 75);
+  border-radius: 15px;
+  text-align: center;
+  padding: 0.5em;
+  width: 4em;
   color: rgb(56, 118, 180);
 }
 
@@ -108,9 +119,39 @@ color: slategray;
   color: rgb(6, 99, 19);
 }
 
+/* Topic Area - menu? */
+
+.topicAreaWrap {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  border: 3px solid purple;
+}
+
+.topicArea {
+  border: 1px solid rgb(24, 24, 87);
+  width: 30%;
+}
+
+.topicTitle,
+.topicName {
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  font-size: 1.8em;
+  letter-spacing: 2px;
+  color: lightslategray;
+}
+
+.topicName:hover {
+  opacity: 0.6;
+}
+
 /* Link Styling Removal */
 
-a, a:visited, a:active, a:focus {
+a,
+a:visited,
+a:active,
+a:focus {
   text-decoration: none;
   color: rgb(78, 59, 85);
 }
