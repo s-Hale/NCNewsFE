@@ -1,6 +1,7 @@
 import React from "react";
-import { fetchArticleById } from "../api";
+import { fetchArticleById, addVoteArticle, downVoteArticle } from "../api";
 import { Link } from "react-router-dom";
+import Comments from "./Comments";
 
 class SingleArticle extends React.Component {
   state = {
@@ -11,13 +12,28 @@ class SingleArticle extends React.Component {
   componentDidMount() {
     let articleID = this.props.match.params.article_id;
     fetchArticleById(articleID).then(results => {
-      console.log(results.article);
       this.setState({
         article: results.article,
         articleVotes: results.article.votes
       });
     });
   }
+
+  handleUpVote = event => {
+    addVoteArticle(this.state.article._id).then(result => {
+      this.setState({
+        articleVotes: result.article.votes
+      });
+    });
+  };
+
+  handleDownVote = event => {
+    downVoteArticle(this.state.article._id).then(result => {
+      this.setState({
+        articleVotes: result.article.votes
+      });
+    });
+  };
 
   render() {
     return (
@@ -38,8 +54,21 @@ class SingleArticle extends React.Component {
           <Link to={`/api/topics/${this.state.article.belongs_to}/articles`}>
             <p className="singleArticleTag">{this.state.article.belongs_to}</p>
           </Link>
-          <p className="singleArticleVoteCount">{this.state.article.votes}</p>
+          <p className="singleArticleVoteCount">
+            {this.state.articleVotes}
+            <i
+              onClick={this.handleUpVote}
+              id="upArrow"
+              className="fa fa-arrow-up articleArrows"
+            />
+            <i
+              onClick={this.handleDownVote}
+              id="downArrow"
+              className="fa fa-arrow-down articleArrows"
+            />
+          </p>
         </div>
+        <Comments articleID={this.state.article._id} />
       </div>
     );
   }
