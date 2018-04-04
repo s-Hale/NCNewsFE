@@ -10,6 +10,7 @@ class AllArticles extends React.Component {
   componentDidMount() {
     let topic = this.props.match.params.topic;
     fetchArticles(topic).then(articles => {
+      console.log(articles);
       if (topic) {
         this.setState({ articles: articles.articles });
       } else {
@@ -27,6 +28,11 @@ class AllArticles extends React.Component {
               <div className="eachIndivArticle" key={i}>
                 <Link to={`/api/articles/${article._id}`}>
                   <h1 className="indivArticleTitle">{article.title}</h1>
+                  <img
+                    className="articleImgHomepage"
+                    src={article.imageURL}
+                    alt="imageofthings"
+                  />
                   <Link to={`/api/users/${article.created_by}`}>
                     <p className="indivArticleAuthor">{article.created_by}</p>
                   </Link>

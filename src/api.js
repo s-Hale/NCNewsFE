@@ -52,3 +52,24 @@ export const downVoteArticle = articleID => {
     method: "PUT"
   }).then(res => res.json());
 };
+
+export const deleteComment = commentID => {
+  return fetch(`http://localhost:9090/api/comments/${commentID}`, {
+    method: "DELETE"
+  }).then(res => {
+    console.log(res);
+    res.json();
+  });
+};
+
+export const addVoteComment = commentID => {
+  return fetch(`http://localhost:9090/api/comments/${commentID}?vote=up`, {
+    method: "PUT"
+  }).then(res => res.json());
+};
+
+export const downVoteComment = commentID => {
+  return fetch(`http://localhost:9090/api/comments/${commentID}?vote=down`, {
+    method: "PUT"
+  }).then(res => res.json());
+};

@@ -39,6 +39,11 @@ class SingleArticle extends React.Component {
     return (
       <div className="singleArticleAreaWrap">
         <div className="singleArticleArea">
+          <img
+            className="articleImgSinglepage"
+            src={this.state.article.imageURL}
+            alt="imageofthings"
+          />
           <h1 className="singleArticleTitle">{this.state.article.title}</h1>
           <article className="singleArticleBody">
             {this.state.article.body}
@@ -59,12 +64,12 @@ class SingleArticle extends React.Component {
             <i
               onClick={this.handleUpVote}
               id="upArrow"
-              className="fa fa-arrow-up articleArrows"
+              className="fa fa-arrow-up articleArrows upArrow"
             />
             <i
               onClick={this.handleDownVote}
               id="downArrow"
-              className="fa fa-arrow-down articleArrows"
+              className="fa fa-arrow-down articleArrows downArrow"
             />
           </p>
         </div>

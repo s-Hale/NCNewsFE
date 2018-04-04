@@ -5,6 +5,7 @@ import AllArticles from "./components/AllArticles";
 import SingleArticle from "./components/SingleArticle";
 import User from "./components/User";
 import Topics from "./components/Topics";
+import Comments from "./components/Comments";
 import "./App.css";
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
             <Route path="/api/articles/:article_id" component={SingleArticle} />
             <Route path="/api/articles" component={AllArticles} />
             <Route path="/api/topics" component={Topics} />
+            <Route path="/api/comments" component={Comments} />
             <Route path="/api/users/:username" component={User} />
             <Route path="/" component={AllArticles} />
           </Switch>

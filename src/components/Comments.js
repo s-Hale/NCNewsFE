@@ -1,6 +1,13 @@
 import React from "react";
-import { fetchComments, postComment } from "../api";
-// import { Link } from "react-router-dom";
+import {
+  fetchComments,
+  postComment,
+  deleteComment,
+  addVoteComment,
+  downVoteComment
+} from "../api";
+import { Link } from "react-router-dom";
+import { filterComments, alterVote } from "../stateupdaters.js";
 
 class Comments extends React.Component {
   state = {
@@ -12,7 +19,7 @@ class Comments extends React.Component {
     if (articleID)
       fetchComments(articleID.articleID).then(comments => {
         this.setState({
-          comments: comments
+          comments: comments.sort(this.handleSortComments)
         });
       });
   }
@@ -27,7 +34,6 @@ class Comments extends React.Component {
     let articleID = this.props.articleID;
     let commentBody = this.state.inputComment;
     postComment(articleID, commentBody).then(result => {
-      console.log(result);
       this.setState({
         inputComment: "",
         comments: this.state.comments
@@ -41,10 +47,32 @@ class Comments extends React.Component {
     return b.created_at - a.created_at;
   }
 
+  handleDeleteComment = event => {
+    let commentID = event.target.id;
+    this.setState({ comments: filterComments(this.state.comments, commentID) });
+    deleteComment(commentID);
+  };
+
+  handleUpVoteComment = event => {
+    let commentID = event.target.id;
+    this.setState({
+      comments: alterVote(this.state.comments, commentID, "up")
+    });
+    addVoteComment(commentID);
+  };
+
+  handleDownVoteComment = event => {
+    let commentID = event.target.id;
+    this.setState({
+      comments: alterVote(this.state.comments, commentID, "down")
+    });
+    downVoteComment(commentID);
+  };
+
   render() {
     return (
       <div className="commentArea">
-        <div className="textAreaPlusSubmit">
+        <div className="textAreaInputBox">
           <textarea
             placeholder="add your comment"
             className="newCommentInput"
@@ -56,11 +84,36 @@ class Comments extends React.Component {
             submit
           </button>
         </div>
-        <h4 className="commentTitle">comment area</h4>
+
         {this.state.comments.map((comment, i) => {
           return (
-            <div key={i} className="eachComment">
+            <div key={i} id="eachComment">
               <p>{comment.body}</p>
+              <Link
+                id="commentUsername"
+                to={`/api/users/${comment.created_by}`}
+              >
+                <p className="indivCommentAuthor">{comment.created_by}</p>
+              </Link>
+              {comment.created_by === "northcoder" && (
+                <i
+                  onClick={this.handleDeleteComment}
+                  id={comment._id}
+                  className="fa fa-times deleteCommentX"
+                  title="delete your comment?"
+                />
+              )}
+              <i
+                onClick={this.handleUpVoteComment}
+                id={comment._id}
+                className="fa fa-arrow-up commentArrows upArrow"
+              />
+              <i
+                onClick={this.handleDownVoteComment}
+                id={comment._id}
+                className="fa fa-arrow-down commentArrows downArrow"
+              />
+              <p>{comment.votes}</p>
             </div>
           );
         })}

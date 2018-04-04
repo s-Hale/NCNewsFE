@@ -23,6 +23,14 @@ body {
 
 /* allArticlesArea */
 
+.articleImgHomepage {
+  height: 200px;
+}
+
+.articleImgSinglepage {
+  height: 200px;
+}
+
 .allArticleAreaWrap {
   display: flex;
   justify-content: center;
@@ -78,6 +86,7 @@ body {
   border: 1px solid blue;
   width: 60%;
   padding: 1em;
+  line-height: 2em;
 }
 
 .singleArticleTitle {
@@ -85,6 +94,7 @@ body {
   font-weight: 400;
   letter-spacing: 2px;
   color: rgb(83, 75, 104);
+  margin-bottom: 20px;
 }
 
 .singleArticleBody {
@@ -115,7 +125,6 @@ body {
 .singleArticleVoteCount {
   font-family: Lato, sans-serif;
   font-size: 1.5em;
-  color: rgb(6, 99, 19);
 }
 
 .articleArrows {
@@ -124,23 +133,23 @@ body {
   cursor: pointer;
 }
 
-.upArrow,
-#upArrow {
+.commentArrows {
+  cursor: pointer;
+}
+
+.upArrow {
   color: rgb(90, 160, 90);
 }
 
-.upArrow:hover,
-#upArrow:hover {
+.upArrow:hover {
   box-shadow: 0px 0px 30px 6px rgb(154, 201, 154);
 }
 
-.downArrow:hover,
-#downArrow:hover {
+.downArrow:hover {
   box-shadow: 0px 0px 30px 6px rgb(230, 157, 157);
 }
 
-.downArrow,
-#downArrow {
+.downArrow {
   color: rgb(182, 93, 93);
 }
 
@@ -174,20 +183,67 @@ body {
 /* Comment Area */
 
 .commentArea {
-  border: 1px solid blue;
+  border: 1px solid gray;
+  width: 80%;
+}
+
+.textAreaInputBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#submitButton {
+  margin-top: 15px;
+  height: 3em;
+  width: 8em;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+#submitButton:hover {
+  background-color: lightgray;
+}
+
+/* actual text box */
+
+#textArea {
+  font-family: Montserrat;
+  margin-top: 15px;
+  width: 60%;
+  height: 3em;
+  border-radius: 12px;
+  padding: 1.2em;
+  font-size: 1.2em;
 }
 
 .commentTitle {
   font-family: Montserrat;
-  font-weight: 400;
+  font-weight: 600;
   letter-spacing: 0.2em;
   color: rgb(83, 75, 104);
   padding: 1em;
 }
 
-.eachComment {
-  border: 1px solid red;
+#eachComment {
+  border: 1px solid rgb(227, 239, 241);
   padding: 1em;
+  font-family: Montserrat;
+  letter-spacing: 0.2em;
+  color: rgb(83, 75, 104);
+}
+
+.indivCommentAuthor {
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.deleteCommentX {
+  font-size: 1.7em;
+  color: rgb(182, 93, 93);
+  cursor: pointer;
 }
 
 /* Link Styling Removal */
