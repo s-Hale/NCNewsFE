@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  fetchComments,
-  postComment,
-  deleteComment,
-  addVoteComment,
-  downVoteComment
-} from "../api";
+import { fetchComments, postComment, deleteComment, addVoteComment, downVoteComment } from "../api";
 import { Link } from "react-router-dom";
 import { filterComments, alterVote } from "../stateupdaters.js";
 
@@ -17,7 +11,8 @@ class Comments extends React.Component {
 
   componentWillReceiveProps(articleID) {
     if (articleID)
-      fetchComments(articleID.articleID).then(comments => {
+      fetchComments(articleID.articleID)
+      .then(comments => {
         this.setState({
           comments: comments.sort(this.handleSortComments)
         });
@@ -33,14 +28,15 @@ class Comments extends React.Component {
   handlePostComment = () => {
     let articleID = this.props.articleID;
     let commentBody = this.state.inputComment;
-    postComment(articleID, commentBody).then(result => {
-      this.setState({
-        inputComment: "",
-        comments: this.state.comments
-          .concat(result.savedComment)
-          .sort(this.handleSortComments)
+    if (this.state.inputComment)
+      postComment(articleID, commentBody).then(result => {
+        this.setState({
+          inputComment: "",
+          comments: this.state.comments
+            .concat(result.savedComment)
+            .sort(this.handleSortComments)
+        });
       });
-    });
   };
 
   handleSortComments(a, b) {
@@ -73,47 +69,26 @@ class Comments extends React.Component {
     return (
       <div className="commentArea">
         <div className="textAreaInputBox">
-          <textarea
-            placeholder="add your comment"
-            className="newCommentInput"
-            id="textArea"
-            onChange={this.handleComment}
-            value={this.state.inputComment}
-          />
+          <textarea placeholder="add your comment" className="newCommentInput" id="textArea" onChange={this.handleComment} value={this.state.inputComment}/>
           <button id="submitButton" onClick={this.handlePostComment}>
             submit
           </button>
         </div>
-
         {this.state.comments.map((comment, i) => {
           return (
             <div key={i} id="eachComment">
               <p>{comment.body}</p>
-              <Link
-                id="commentUsername"
-                to={`/api/users/${comment.created_by}`}
-              >
+              <Link id="commentUsername" to={`/api/users/${comment.created_by}`}>
                 <p className="indivCommentAuthor">{comment.created_by}</p>
               </Link>
-              {comment.created_by === "northcoder" && (
-                <i
-                  onClick={this.handleDeleteComment}
-                  id={comment._id}
-                  className="fa fa-times deleteCommentX"
-                  title="delete your comment?"
-                />
-              )}
-              <i
-                onClick={this.handleUpVoteComment}
-                id={comment._id}
-                className="fa fa-arrow-up commentArrows upArrow"
-              />
-              <i
-                onClick={this.handleDownVoteComment}
-                id={comment._id}
-                className="fa fa-arrow-down commentArrows downArrow"
-              />
-              <p>{comment.votes}</p>
+              <i onClick={this.handleUpVoteComment} id={comment._id} className="fa fa-arrow-up commentArrows upArrow"/>
+              <i onClick={this.handleDownVoteComment} id={comment._id} className="fa fa-arrow-down commentArrows downArrow" />
+              <div className="xWrapper">
+                <p>{comment.votes}</p>
+                {comment.created_by === "northcoder" && (
+                  <i onClick={this.handleDeleteComment} id={comment._id} className="fa fa-times deleteCommentX" title="delete your comment?" />
+                )}
+              </div>
             </div>
           );
         })}

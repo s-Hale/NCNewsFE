@@ -11,8 +11,8 @@ export const fetchArticles = topic => {
 export const fetchArticleById = articleID => {
   return fetch(`http://localhost:9090/api/articles/${articleID}`).then(res =>
     res.json()
-  );
-};
+  )
+}
 
 export const fetchUserInfo = userInfo => {
   return fetch(`http://localhost:9090/api/users/${userInfo}`).then(res =>

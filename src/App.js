@@ -15,11 +15,7 @@ class App extends Component {
         <div>
           <Header />
           <Switch>
-            <Route
-              exact
-              path="/api/topics/:topic/articles"
-              component={AllArticles}
-            />
+            <Route exact path="/api/topics/:topic/articles" component={AllArticles}/>
             <Route path="/api/articles/:article_id" component={SingleArticle} />
             <Route path="/api/articles" component={AllArticles} />
             <Route path="/api/topics" component={Topics} />

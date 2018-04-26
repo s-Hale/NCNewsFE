@@ -7,7 +7,8 @@ class Topics extends React.Component {
   };
 
   componentDidMount() {
-    fetchTopics().then(body => {
+    fetchTopics()
+    .then(body => {
       this.setState({ topics: body.topics });
     });
   }

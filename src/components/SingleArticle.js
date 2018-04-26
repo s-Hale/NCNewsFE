@@ -15,9 +15,10 @@ class SingleArticle extends React.Component {
       this.setState({
         article: results.article,
         articleVotes: results.article.votes
-      });
-    });
-  }
+      })
+    })
+    .catch(err => ({status: 400, err: 'error message'})
+  )}
 
   handleUpVote = event => {
     addVoteArticle(this.state.article._id).then(result => {
@@ -56,6 +57,7 @@ class SingleArticle extends React.Component {
               {this.state.article.created_by}
             </p>
           </Link>
+          <p className='tagWord'>tags:</p>
           <Link to={`/api/topics/${this.state.article.belongs_to}/articles`}>
             <p className="singleArticleTag">{this.state.article.belongs_to}</p>
           </Link>

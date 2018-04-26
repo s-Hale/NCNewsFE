@@ -4,20 +4,21 @@ import { Link } from "react-router-dom";
 
 class AllArticles extends React.Component {
   state = {
-    articles: []
+    articles: [],
+    menuShow: false
   };
 
   componentDidMount() {
     let topic = this.props.match.params.topic;
     fetchArticles(topic).then(articles => {
-      console.log(articles);
       if (topic) {
         this.setState({ articles: articles.articles });
       } else {
         this.setState({ articles: articles.allArticles });
       }
-    });
-  }
+    })
+    .catch(err => console.log(err))
+}
 
   render() {
     return (
@@ -28,11 +29,12 @@ class AllArticles extends React.Component {
               <div className="eachIndivArticle" key={i}>
                 <Link to={`/api/articles/${article._id}`}>
                   <h1 className="indivArticleTitle">{article.title}</h1>
+                  <div className='homepage-img-wrapper'>
                   <img
                     className="articleImgHomepage"
                     src={article.imageURL}
                     alt="imageofthings"
-                  />
+                  /></div>
                   <Link to={`/api/users/${article.created_by}`}>
                     <p className="indivArticleAuthor">{article.created_by}</p>
                   </Link>
