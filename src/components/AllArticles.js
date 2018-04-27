@@ -29,17 +29,14 @@ class AllArticles extends React.Component {
               <div className="eachIndivArticle" key={i}>
                 <Link to={`/api/articles/${article._id}`}>
                   <h1 className="indivArticleTitle">{article.title}</h1>
-                  <div className='homepage-img-wrapper'>
+                  <div className='img-wrapper'>
                   <img
                     className="articleImgHomepage"
                     src={article.imageURL}
                     alt="imageofthings"
                   /></div>
-                  <Link to={`/api/users/${article.created_by}`}>
-                    <p className="indivArticleAuthor">{article.created_by}</p>
-                  </Link>
                   <div className="indivArticleSnippet">
-                    {article.body.substring(0, 250) + " ... [read more]"}
+                    {article.body.substring(0, 120) + " ..."}
                   </div>
                 </Link>
               </div>

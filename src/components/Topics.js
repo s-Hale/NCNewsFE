@@ -10,14 +10,14 @@ class Topics extends React.Component {
     fetchTopics()
     .then(body => {
       this.setState({ topics: body.topics });
-    });
+    })
   }
 
   render() {
     return (
       <div className="topicAreaWrap">
-        <div className="topicArea">
-          <h3 className="topicTitle">view articles by topic</h3>
+          <h3 className="topicTitle">browse articles by topic</h3>
+          <div className='topicTagsArea'>
           {this.state.topics.map((topic, i) => {
             return (
               <div key={i}>
@@ -27,7 +27,7 @@ class Topics extends React.Component {
               </div>
             );
           })}
-        </div>
+          </div>
       </div>
     );
   }

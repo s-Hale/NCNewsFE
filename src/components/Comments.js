@@ -76,7 +76,7 @@ class Comments extends React.Component {
         </div>
         {this.state.comments.map((comment, i) => {
           return (
-            <div key={i} id="eachComment">
+            <div key={i} className="eachComment">
               <p>{comment.body}</p>
               <Link id="commentUsername" to={`/api/users/${comment.created_by}`}>
                 <p className="indivCommentAuthor">{comment.created_by}</p>

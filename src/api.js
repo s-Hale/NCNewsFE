@@ -14,6 +14,12 @@ export const fetchArticleById = articleID => {
   )
 }
 
+export const fetchArticlesByUsername = username => {
+  return fetch(`http://localhost:9090/api/articles/${username}`).then(res =>
+    res.json()
+  )
+}
+
 export const fetchUserInfo = userInfo => {
   return fetch(`http://localhost:9090/api/users/${userInfo}`).then(res =>
     res.json()

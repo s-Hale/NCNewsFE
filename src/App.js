@@ -21,7 +21,7 @@ class App extends Component {
             <Route path="/api/topics" component={Topics} />
             <Route path="/api/comments" component={Comments} />
             <Route path="/api/users/:username" component={User} />
-            <Route path="/" component={AllArticles} />
+            {/* <Route path="/" component={AllArticles} /> */}
           </Switch>
           <div className="App" />
         </div>

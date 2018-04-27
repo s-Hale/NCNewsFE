@@ -20,18 +20,28 @@ class User extends React.Component {
        return article.created_by === userInfo
      })
     this.setState({ userArticles: userArts });
-    });
+    })
   }
 
   render() {
     return (
-      <div className='userWrapper'>
+      <div className='userAreaWrap'>
       <div className="userProfileArea">
-        <h4 id="profileUsername">user:{this.state.user.username}</h4>
-        <h4 id="profileName">name:{this.state.user.name}</h4>
-        <img src={this.state.user.avatar_url} className="userAvatar" alt="userAvatar"/>
+      <img src={this.state.user.avatar_url} className="userAvatar" alt="userAvatar"/>
+
+        <div className="profileUsername">
+          <p>user:</p>
+          <p>{this.state.user.username}</p>
+        </div>
+        <div className="profileName">
+          <p>name:</p>
+          <p>{this.state.user.name}</p>
+        </div>
+
       </div>
+
       <div className='userArticles'>
+      <h2 className='byUser'>by this user:</h2>
           {this.state.userArticles.map((article, i) => {
             return (
               <div className="indivUserArticle" key={i}>
@@ -39,7 +49,7 @@ class User extends React.Component {
                   <h1 className="indivUserArticleTitle">{article.title}</h1>
                   </Link>
                   <div className="indivUserArticleSnippet">
-                    {article.body.substring(0, 250) + " ... [read more]"}
+                    {article.body.substring(0, 50) + " ... [read more]"}
                   </div>
               </div>
             )

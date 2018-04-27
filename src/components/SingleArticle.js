@@ -40,15 +40,14 @@ class SingleArticle extends React.Component {
     return (
       <div className="singleArticleAreaWrap">
         <div className="singleArticleArea">
+        <div className='img-wrapper'>
           <img
-            className="articleImgSinglepage"
+            className="articleImgSinglePage"
             src={this.state.article.imageURL}
             alt="imageofthings"
           />
+          </div>
           <h1 className="singleArticleTitle">{this.state.article.title}</h1>
-          <article className="singleArticleBody">
-            {this.state.article.body}
-          </article>
           <Link
             id="articleUsername"
             to={`/api/users/${this.state.article.created_by}`}
@@ -57,17 +56,20 @@ class SingleArticle extends React.Component {
               {this.state.article.created_by}
             </p>
           </Link>
+          <article className="singleArticleBody">
+            {this.state.article.body}
+          </article>
           <p className='tagWord'>tags:</p>
           <Link to={`/api/topics/${this.state.article.belongs_to}/articles`}>
             <p className="singleArticleTag">{this.state.article.belongs_to}</p>
           </Link>
           <p className="singleArticleVoteCount">
-            {this.state.articleVotes}
             <i
               onClick={this.handleUpVote}
               id="upArrow"
               className="fa fa-arrow-up articleArrows upArrow"
             />
+            {this.state.articleVotes}
             <i
               onClick={this.handleDownVote}
               id="downArrow"
