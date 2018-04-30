@@ -24,13 +24,16 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
 }
 
+/* Images */
+
 .articleImgHomepage {
   width: 18em;
   border-radius: 12px;
 }
 
 .articleImgSinglePage {
-  width: 30em;
+  width: 70%;
+  border-radius: 12px;
 }
 
 /* Topics / Horizontal bar */
@@ -45,6 +48,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .topicTitle, .topicName {
   font-size: 1em;
+  text-transform: lowercase;
+}
+
+.topicName {
+  color: slategray;
 }
 
 .topicTitle {
@@ -52,7 +60,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .topicName:hover {
-  text-shadow: 0em 0em 2em darkslategray;
+  text-shadow: 0em 0em 3em slategray;
 }
 
 .topicTagsArea {
@@ -89,6 +97,7 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   flex-flow: row wrap;
   margin: 2px;
+  width: 90%;
 }
 
 .eachIndivArticle { 
@@ -96,7 +105,7 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px dotted lightslategray;
   border-radius: 12px;
   width: 22em;
-  margin: 1em;
+  margin: 2em;
   padding: 1em;
 }
 
@@ -132,11 +141,9 @@ h1, h2, h3, h4, h5, h6 {
   font-family: Montserrat, sans-serif;
 }
 
-
 .singleArticleArea {
   width: 60%;
   font-family: Montserrat, sans-serif;
-  
 }
 
 .singleArticleTitle {
@@ -144,7 +151,7 @@ h1, h2, h3, h4, h5, h6 {
 } 
 
 .singleArticleBody {
-  line-height: 1.5em;
+  line-height: 1.8em;
   padding: 1em;
 }
 
@@ -163,7 +170,11 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.9em;
   margin: 0.5em;
   padding-left: 1em;
-} 
+}
+
+.clickDisable {
+  pointer-events: none;
+}
 
  .singleArticleVoteCount {
  margin: 0.5em;
@@ -182,6 +193,10 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
 }
 
+.voteNumber {
+  margin: 0 0.5em 0 0.5em;
+}
+
 .upArrow {
   color: rgb(90, 160, 90);
 }
@@ -196,8 +211,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .downArrow {
   color: rgb(182, 93, 93);
-} 
-
+}
 
 /* Comment Area */
 
@@ -321,6 +335,22 @@ line-height: 1.5em;
 margin: 0.2em;
 }
 
+/* Not found */
 
+.notFoundAreaWrap {
+  display: flex;
+  justify-content: center;
+}
 
+.nfWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: Montserrat;
+  color: lightslategray;
+  font-size: 3em;
+  height: 5em;
+  width: 10em;
+}
 

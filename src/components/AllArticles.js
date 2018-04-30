@@ -17,7 +17,7 @@ class AllArticles extends React.Component {
         this.setState({ articles: articles.allArticles });
       }
     })
-    .catch(err => console.log(err))
+    .catch(err => (this.props.history.push('/404')))
 }
 
   render() {

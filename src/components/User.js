@@ -14,6 +14,7 @@ class User extends React.Component {
     .then(body => {
       this.setState({ user: body.user });
     })
+    .catch(err => (this.props.history.push('/404')))
     fetchArticles()
     .then(res => {
       let userArts = res.allArticles.filter(article => {
@@ -21,6 +22,7 @@ class User extends React.Component {
      })
     this.setState({ userArticles: userArts });
     })
+    .catch(err => (this.props.history.push('/404')))
   }
 
   render() {
@@ -49,7 +51,7 @@ class User extends React.Component {
                   <h1 className="indivUserArticleTitle">{article.title}</h1>
                   </Link>
                   <div className="indivUserArticleSnippet">
-                    {article.body.substring(0, 50) + " ... [read more]"}
+                    {article.body.substring(0, 50) + " ..."}
                   </div>
               </div>
             )

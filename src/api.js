@@ -9,19 +9,19 @@ export const fetchArticles = topic => {
 };
 
 export const fetchArticleById = articleID => {
-  return fetch(`http://localhost:9090/api/articles/${articleID}`).then(res =>
+  return fetch(`http://localhost:9090/api/articles/${articleID}`).then(res => 
     res.json()
   )
 }
 
 export const fetchArticlesByUsername = username => {
-  return fetch(`http://localhost:9090/api/articles/${username}`).then(res =>
+  return fetch(`http://localhost:9090/api/articles/${username}`).then(res => 
     res.json()
   )
 }
 
 export const fetchUserInfo = userInfo => {
-  return fetch(`http://localhost:9090/api/users/${userInfo}`).then(res =>
+  return fetch(`http://localhost:9090/api/users/${userInfo}`).then(res => 
     res.json()
   );
 };
@@ -47,14 +47,14 @@ export const postComment = (articleID, commentBody) => {
   }).then(res => res.json());
 };
 
-export const addVoteArticle = articleID => {
-  return fetch(`http://localhost:9090/api/articles/${articleID}?vote=up`, {
+export const addVoteArticle = (articleID, articleVote) => {
+  return fetch(`http://localhost:9090/api/articles/${articleID}?vote=up&articleVote=${articleVote}`, {
     method: "PUT"
   }).then(res => res.json());
 };
 
-export const downVoteArticle = articleID => {
-  return fetch(`http://localhost:9090/api/articles/${articleID}?vote=down`, {
+export const downVoteArticle = (articleID, articleVote) => {
+  return fetch(`http://localhost:9090/api/articles/${articleID}?vote=down&articleVote=${articleVote}`, {
     method: "PUT"
   }).then(res => res.json());
 };
@@ -63,7 +63,6 @@ export const deleteComment = commentID => {
   return fetch(`http://localhost:9090/api/comments/${commentID}`, {
     method: "DELETE"
   }).then(res => {
-    console.log(res);
     res.json();
   });
 };

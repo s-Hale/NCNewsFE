@@ -16,7 +16,8 @@ class Comments extends React.Component {
         this.setState({
           comments: comments.sort(this.handleSortComments)
         });
-      });
+      })
+      .catch(err => (this.props.history.push('/404')))
   }
 
   handleComment = event => {
@@ -45,7 +46,9 @@ class Comments extends React.Component {
 
   handleDeleteComment = event => {
     let commentID = event.target.id;
-    this.setState({ comments: filterComments(this.state.comments, commentID) });
+    this.setState({
+      comments: filterComments(this.state.comments, commentID) 
+    });
     deleteComment(commentID);
   };
 

@@ -17,23 +17,25 @@ class SingleArticle extends React.Component {
         articleVotes: results.article.votes
       })
     })
-    .catch(err => ({status: 400, err: 'error message'})
+    .catch(err => (this.props.history.push('/404'))
   )}
 
+
+
   handleUpVote = event => {
-    addVoteArticle(this.state.article._id).then(result => {
+    addVoteArticle(this.state.article._id, this.state.articleVotes).then(result => {
       this.setState({
         articleVotes: result.article.votes
-      });
-    });
+      })
+    })
   };
 
   handleDownVote = event => {
-    downVoteArticle(this.state.article._id).then(result => {
+    downVoteArticle(this.state.article._id, this.state.articleVotes).then(result => {
       this.setState({
         articleVotes: result.article.votes
-      });
-    });
+      })
+    })
   };
 
   render() {
@@ -63,19 +65,19 @@ class SingleArticle extends React.Component {
           <Link to={`/api/topics/${this.state.article.belongs_to}/articles`}>
             <p className="singleArticleTag">{this.state.article.belongs_to}</p>
           </Link>
-          <p className="singleArticleVoteCount">
+          <div className="singleArticleVoteCount">
             <i
               onClick={this.handleUpVote}
               id="upArrow"
               className="fa fa-arrow-up articleArrows upArrow"
             />
-            {this.state.articleVotes}
+            <p className='voteNumber'>{this.state.articleVotes}</p>
             <i
               onClick={this.handleDownVote}
               id="downArrow"
               className="fa fa-arrow-down articleArrows downArrow"
             />
-          </p>
+          </div>
         </div>
         <Comments articleID={this.state.article._id} />
       </div>

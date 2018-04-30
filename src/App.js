@@ -6,6 +6,7 @@ import SingleArticle from "./components/SingleArticle";
 import User from "./components/User";
 import Topics from "./components/Topics";
 import Comments from "./components/Comments";
+import NotFound from "./components/NotFound";
 import "./App.css";
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
             <Route path="/api/comments" component={Comments} />
             <Route path="/api/users/:username" component={User} />
             {/* <Route path="/" component={AllArticles} /> */}
+            <Route component={NotFound} />
           </Switch>
           <div className="App" />
         </div>

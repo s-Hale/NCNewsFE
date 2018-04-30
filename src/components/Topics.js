@@ -11,6 +11,7 @@ class Topics extends React.Component {
     .then(body => {
       this.setState({ topics: body.topics });
     })
+    .catch(err => (this.props.history.push('/404')))
   }
 
   render() {
@@ -18,6 +19,7 @@ class Topics extends React.Component {
       <div className="topicAreaWrap">
           <h3 className="topicTitle">browse articles by topic</h3>
           <div className='topicTagsArea'>
+          <a className='topicName' href="/api/articles">All</a>
           {this.state.topics.map((topic, i) => {
             return (
               <div key={i}>
