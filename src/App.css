@@ -41,6 +41,7 @@ h1, h2, h3, h4, h5, h6 {
 .topicAreaWrap {
   font-family: Montserrat;
   display: flex;
+  flex-direction: row;
   justify-content: flex-start space-between;
   padding: 0.4em;
   margin-top: 0.5em;
@@ -49,24 +50,36 @@ h1, h2, h3, h4, h5, h6 {
 .topicTitle, .topicName {
   font-size: 1em;
   text-transform: lowercase;
-}
-
-.topicName {
-  color: slategray;
-}
-
-.topicTitle {
+  letter-spacing: 0.1em;
   color: lightslategray;
 }
 
 .topicName:hover {
-  text-shadow: 0em 0em 3em slategray;
+  text-shadow: 0em 0em 3em darkslategray;
 }
 
 .topicTagsArea {
   width: 50%;
   display: flex;
   justify-content: space-between;
+}
+
+@media only screen and (max-width: 770px) {
+  .topicAreaWrap {
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+
+  .topicTagsArea {
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+  }
+
+  .topicName {
+    margin: 0.6em;
+  }
+
 }
 
 /* Header Area */
@@ -82,6 +95,17 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   letter-spacing: 0.1em;
   color: slategray;
+}
+
+@media only screen and (max-width: 770px) {
+  .mainTitle {
+    font-size: 2.5em;
+    text-align: center;
+  }
+
+  .headerAreaWrap {
+    padding: 0;
+  }
 }
 
 /* All articles / Homepage */
@@ -119,7 +143,6 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.5em;
  }
   
-
  .indivArticleAuthor { 
    font-size: 0.7em;
  } 
@@ -253,10 +276,6 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.2em;
 }
 
-.indivCommentAuthor {
-
-}
-
  .eachComment {
   border: 1px solid rgb(227, 239, 241);
   border-radius: 10px;
@@ -281,7 +300,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .userAreaWrap {
   display: flex;
-  flex-direction: row wrap;
+  flex-direction: row;
   justify-content: flex-start space-evenly;
   font-family: Montserrat;
 }
@@ -289,20 +308,31 @@ h1, h2, h3, h4, h5, h6 {
 .userProfileArea {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  height: 20em;
+  height: 25em;
+  border: 1px dotted rgb(221, 221, 221);
+  border-radius: 12px;
+  background: linear-gradient(to right, #e0e0e0, #f1eff5);
 }
 
 .profileUsername, .profileName {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  
+  flex: 1;
+  margin: 1em;
+  padding: 1em;
+  border-radius: 12px;
+  background-color: white;
+}
+
+.imgWrap {
+  flex: 3;
+  margin: 1em;
+  background-color: white;
 }
 
 .userAvatar {
   width: 10em;
-  border: 1px dotted lightslategray;
-  border-radius: 12px;
   padding: 1.5em;
 }
 
@@ -319,8 +349,8 @@ h1, h2, h3, h4, h5, h6 {
 .indivUserArticle {
   border: 1px dotted grey;
   border-radius: 12px;
-  margin: 0.2em;
-  padding: 0.6em;
+  margin: 0.7em;
+  padding: 0.7em;
 }
 
 .indivUserArticleTitle {
@@ -334,6 +364,23 @@ letter-spacing: 0.1em;
 line-height: 1.5em;
 margin: 0.2em;
 }
+
+@media only screen and (max-width: 770px) {
+  .userAreaWrap {
+    flex-direction: column;
+    align-items: center;
+  }
+  .userProfileArea {
+   width: 90%;
+   align-items: center;
+  }
+  .profileUsername, .profileName {
+    width: 50%;
+  }
+  .userArticles {
+    width: 90%;
+   }
+  }
 
 /* Not found */
 

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Header from "./components/Header";
 import AllArticles from "./components/AllArticles";
 import SingleArticle from "./components/SingleArticle";
@@ -22,8 +22,8 @@ class App extends Component {
             <Route path="/api/topics" component={Topics} />
             <Route path="/api/comments" component={Comments} />
             <Route path="/api/users/:username" component={User} />
-            <Route path="/" component={AllArticles} />
-            <Route component={NotFound} />
+            <Route exact path="/" render={() => (<Redirect to="/api/articles/"/>)}/>
+            <Route path="/*" component={NotFound} />
           </Switch>
           <div className="App" />
         </div>
@@ -31,5 +31,7 @@ class App extends Component {
     );
   }
 }
+
+
 
 export default App;

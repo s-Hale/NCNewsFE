@@ -29,8 +29,9 @@ class User extends React.Component {
     return (
       <div className='userAreaWrap'>
       <div className="userProfileArea">
+      <div className='imgWrap'>
       <img src={this.state.user.avatar_url} className="userAvatar" alt="userAvatar"/>
-
+      </div>
         <div className="profileUsername">
           <p>user:</p>
           <p>{this.state.user.username}</p>
@@ -39,9 +40,7 @@ class User extends React.Component {
           <p>name:</p>
           <p>{this.state.user.name}</p>
         </div>
-
       </div>
-
       <div className='userArticles'>
       <h2 className='byUser'>by this user:</h2>
           {this.state.userArticles.map((article, i) => {
