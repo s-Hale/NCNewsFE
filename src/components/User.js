@@ -9,9 +9,11 @@ class User extends React.Component {
   };
 
   componentDidMount() {
+ 
     const userInfo = this.props.match.params.username;
     fetchUserInfo(userInfo)
     .then(body => {
+      if(body.user.username)
       this.setState({ user: body.user });
     })
     .catch(err => (this.props.history.push('/404')))
@@ -24,6 +26,9 @@ class User extends React.Component {
     })
     .catch(err => (this.props.history.push('/404')))
   }
+
+  //do not do history.push, it messes up pressing back
+  
 
   render() {
     return (

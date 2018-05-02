@@ -4,21 +4,24 @@ import { Link } from "react-router-dom";
 
 class AllArticles extends React.Component {
   state = {
-    articles: [],
-    menuShow: false
+    articles: []
   };
 
   componentDidMount() {
     let topic = this.props.match.params.topic;
     fetchArticles(topic).then(articles => {
       if (topic) {
+        if(articles.articles)
         this.setState({ articles: articles.articles });
       } else {
-        this.setState({ articles: articles.allArticles });
+        if(articles.Allarticles)
+        this.setState({ articles: articles.allArticles })
       }
     })
     .catch(err => (this.props.history.push('/404')))
 }
+
+//do not do history.push, it messes up pressing back
 
   render() {
     return (

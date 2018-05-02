@@ -9,10 +9,13 @@ class Topics extends React.Component {
   componentDidMount() {
     fetchTopics()
     .then(body => {
+      // if(body.topics)
       this.setState({ topics: body.topics });
     })
     .catch(err => (this.props.history.push('/404')))
   }
+
+  //do not do history.push, it messes up pressing back
 
   render() {
     return (

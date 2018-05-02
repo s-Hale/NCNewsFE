@@ -20,6 +20,8 @@ class SingleArticle extends React.Component {
     .catch(err => (this.props.history.push('/404'))
   )}
 
+  //do not do history.push, it messes up pressing back
+
 
 
   handleUpVote = event => {
