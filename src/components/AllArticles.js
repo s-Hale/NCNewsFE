@@ -13,13 +13,14 @@ class AllArticles extends React.Component {
       if (topic) {
         if(articles.articles)
         this.setState({ articles: articles.articles });
-      } else {
-        if(articles.Allarticles)
+      } else  {
         this.setState({ articles: articles.allArticles })
       }
     })
     .catch(err => (this.props.history.push('/404')))
 }
+
+// if (articles.Articles) ? topics doesn't push 404 wai ~~
 
 //do not do history.push, it messes up pressing back
 

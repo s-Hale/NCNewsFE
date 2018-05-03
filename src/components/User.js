@@ -16,8 +16,7 @@ class User extends React.Component {
       if(body.user.username)
       this.setState({ user: body.user });
     })
-    .catch(err => (this.props.history.push('/404')))
-    fetchArticles()
+    .then(res => fetchArticles())
     .then(res => {
       let userArts = res.allArticles.filter(article => {
        return article.created_by === userInfo
@@ -25,7 +24,7 @@ class User extends React.Component {
     this.setState({ userArticles: userArts });
     })
     .catch(err => (this.props.history.push('/404')))
-  }
+  } 
 
   //do not do history.push, it messes up pressing back
   
