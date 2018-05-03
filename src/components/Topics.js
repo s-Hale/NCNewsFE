@@ -1,5 +1,6 @@
 import React from "react";
 import { fetchTopics } from "../api";
+import { Link } from "react-router-dom";
 
 class Topics extends React.Component {
   state = {
@@ -9,7 +10,6 @@ class Topics extends React.Component {
   componentDidMount() {
     fetchTopics()
     .then(body => {
-      // if(body.topics)
       this.setState({ topics: body.topics });
     })
     .catch(err => (this.props.history.push('/404')))
@@ -22,13 +22,13 @@ class Topics extends React.Component {
       <div className="topicAreaWrap">
           <h3 className="topicTitle">browse articles by topic</h3>
           <div className='topicTagsArea'>
-          <a className='topicName' href="/api/articles">All</a>
+          <Link className='topicName' to="/api/articles">All</Link>
           {this.state.topics.map((topic, i) => {
             return (
               <div key={i}>
-                <a href={`/api/topics/${topic.slug}/articles`}>
+                <Link to={`/api/topics/${topic.slug}/articles`}>
                   <h5 className="topicName">{topic.title}</h5>
-                </a>
+                </Link>
               </div>
             );
           })}

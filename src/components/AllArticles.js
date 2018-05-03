@@ -9,18 +9,13 @@ class AllArticles extends React.Component {
 
   componentDidMount() {
     let topic = this.props.match.params.topic;
-    fetchArticles(topic).then(articles => {
-      if (topic) {
-        if(articles.articles)
-        this.setState({ articles: articles.articles });
-      } else  {
-        this.setState({ articles: articles.allArticles })
-      }
-    })
-    .catch(err => (this.props.history.push('/404')))
-}
+    this.fetchArticlesByTopic(topic)
+  }
 
-// if (articles.Articles) ? topics doesn't push 404 wai ~~
+  componentWillReceiveProps(newProps) {
+    let topic = newProps.match.params.topic
+    this.fetchArticlesByTopic(topic)
+ }
 
 //do not do history.push, it messes up pressing back
 
@@ -50,6 +45,20 @@ class AllArticles extends React.Component {
       </div>
     );
   }
+
+   fetchArticlesByTopic(topic) {
+    fetchArticles(topic).then(articles => {
+      if (topic) {
+        if(articles.articles)
+        this.setState({ articles: articles.articles });
+      } else  {
+        this.setState({ articles: articles.allArticles })
+      }
+    })
+    .catch(err => (this.props.history.push('/404')))
+  }
 }
+
+
 
 export default AllArticles;
