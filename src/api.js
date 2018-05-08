@@ -33,7 +33,7 @@ export const fetchTopics = () => {
 export const fetchComments = articleID => {
   return fetch(`http://localhost:9090/api/articles/${articleID}/comments`).then(
     res => res.json()
-  );
+  )
 };
 
 export const postComment = (articleID, commentBody) => {

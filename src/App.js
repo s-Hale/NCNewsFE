@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Header from "./components/Header";
-import AllArticles from "./components/AllArticles";
+import Articles from "./components/Articles";
 import SingleArticle from "./components/SingleArticle";
 import User from "./components/User";
 import Comments from "./components/Comments";
@@ -15,13 +15,13 @@ class App extends Component {
         <div>
           <Header />
           <Switch>
-            <Route exact path="/api/topics/:topic/articles" component={AllArticles}/>
-            <Route path="/api/articles/:article_id" component={SingleArticle} />
-            <Route path="/api/articles" component={AllArticles} />
-            <Route path="/api/topics" render={() => (<Redirect to="/api/articles"/>)}/>
-            <Route path="/api/comments" component={Comments} />
-            <Route path="/api/users/:username" component={User} />
-            <Route exact path="/" render={() => (<Redirect to="/api/articles/"/>)}/>
+            <Route path="/topics/:topic/articles" component={Articles}/>
+            <Route path="/articles/:article_id" component={SingleArticle} />
+            <Route path="/articles" component={Articles} />
+            <Route path="/topics" render={() => (<Redirect to="/articles"/>)}/>
+            <Route path="/comments" component={Comments} />
+            <Route path="/users/:username" component={User} />
+            <Route exact path="/" render={() => (<Redirect to="/articles/"/>)}/>
             <Route path="/*" component={NotFound} />
           </Switch>
           <div className="App" />

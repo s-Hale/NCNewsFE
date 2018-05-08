@@ -12,6 +12,7 @@ class Comments extends React.Component {
   componentWillReceiveProps(articleID) {
     if (articleID)
       fetchComments(articleID.articleID)
+      //fix this, send correct info from res
       .then(comments => {
         this.setState({
           comments: comments.sort(this.handleSortComments)
@@ -35,12 +36,12 @@ class Comments extends React.Component {
           inputComment: "",
           comments: this.state.comments
             .concat(result.savedComment)
-            .sort(this.handleSortComments)
+            .sort(this.sortComments)
         });
       });
   };
 
-  handleSortComments(a, b) {
+  sortComments(a, b) {
     return b.created_at - a.created_at;
   }
 
@@ -81,7 +82,7 @@ class Comments extends React.Component {
           return (
             <div key={i} className="eachComment">
               <p>{comment.body}</p>
-              <Link id="commentUsername" to={`/api/users/${comment.created_by}`}>
+              <Link id="commentUsername" to={`/users/${comment.created_by}`}>
                 <p className="indivCommentAuthor">{comment.created_by}</p>
               </Link>
               <i onClick={this.handleUpVoteComment} id={comment._id} className="fa fa-arrow-up commentArrows upArrow"/>

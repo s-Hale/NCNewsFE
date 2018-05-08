@@ -15,18 +15,16 @@ class Topics extends React.Component {
     .catch(err => (this.props.history.push('/404')))
   }
 
-  //do not do history.push, it messes up pressing back
-
   render() {
     return (
       <div className="topicAreaWrap">
           <h3 className="topicTitle">browse articles by topic</h3>
           <div className='topicTagsArea'>
-          <Link className='topicName' to="/api/articles">All</Link>
+          <Link className='topicName' to="/articles">All</Link>
           {this.state.topics.map((topic, i) => {
             return (
               <div key={i}>
-                <Link to={`/api/topics/${topic.slug}/articles`}>
+                <Link to={`/topics/${topic.slug}/articles`}>
                   <h5 className="topicName">{topic.title}</h5>
                 </Link>
               </div>

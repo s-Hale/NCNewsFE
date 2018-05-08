@@ -1,32 +1,30 @@
-import React from "react";
+import React, {Component} from "react";
 import { fetchArticles } from "../api";
 import { Link } from "react-router-dom";
 
-class AllArticles extends React.Component {
+class Articles extends Component {
   state = {
     articles: []
   };
 
   componentDidMount() {
-    let topic = this.props.match.params.topic;
+    let { topic } = this.props.match.params;
     this.fetchArticlesByTopic(topic)
   }
 
   componentWillReceiveProps(newProps) {
-    let topic = newProps.match.params.topic
+    let { topic } = newProps.match.params;
     this.fetchArticlesByTopic(topic)
  }
 
-//do not do history.push, it messes up pressing back
-
   render() {
     return (
-      <div className="allArticleAreaWrap">
-        <div className="allArticleArea">
+      <div className="articleAreaWrap">
+        <div className="articleArea">
           {this.state.articles.map((article, i) => {
             return (
               <div className="eachIndivArticle" key={i}>
-                <Link to={`/api/articles/${article._id}`}>
+                <Link to={`/articles/${article._id}`}>
                   <h1 className="indivArticleTitle">{article.title}</h1>
                   <div className='img-wrapper'>
                   <img
@@ -46,7 +44,9 @@ class AllArticles extends React.Component {
     );
   }
 
-   fetchArticlesByTopic(topic) {
+  //eslint properly, and install as dev dependency
+
+   fetchArticlesByTopic = (topic) => {
     fetchArticles(topic).then(articles => {
       if (topic) {
         if(articles.articles)
@@ -61,4 +61,4 @@ class AllArticles extends React.Component {
 
 
 
-export default AllArticles;
+export default Articles;

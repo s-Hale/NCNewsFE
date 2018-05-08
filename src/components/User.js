@@ -9,9 +9,8 @@ class User extends React.Component {
   };
 
   componentDidMount() {
- 
-    const userInfo = this.props.match.params.username;
-    fetchUserInfo(userInfo)
+    const { username } = this.props.match.params;
+    fetchUserInfo(username)
     .then(body => {
       if(body.user.username)
       this.setState({ user: body.user });
@@ -19,17 +18,14 @@ class User extends React.Component {
     .then(res => fetchArticles())
     .then(res => {
       let userArts = res.allArticles.filter(article => {
-       return article.created_by === userInfo
+       return article.created_by === username
      })
     this.setState({ userArticles: userArts });
     })
     .catch(err => (this.props.history.push('/404')))
   } 
 
-  //do not do history.push, it messes up pressing back
-  
-
-  render() {
+   render() {
     return (
       <div className='userAreaWrap'>
       <div className="userProfileArea">
@@ -50,7 +46,7 @@ class User extends React.Component {
           {this.state.userArticles.map((article, i) => {
             return (
               <div className="indivUserArticle" key={i}>
-                <Link to={`/api/articles/${article._id}`}>
+                <Link to={`/articles/${article._id}`}>
                   <h1 className="indivUserArticleTitle">{article.title}</h1>
                   </Link>
                   <div className="indivUserArticleSnippet">
@@ -59,7 +55,7 @@ class User extends React.Component {
               </div>
             )
           })}
-            </div>
+         </div>
       </div>
     );
   }
