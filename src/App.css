@@ -64,24 +64,6 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: space-between;
 }
 
-@media only screen and (max-width: 770px) {
-  .topicAreaWrap {
-    flex-flow: row wrap;
-    justify-content: center;
-  }
-
-  .topicTagsArea {
-    flex-direction: column;
-    align-items: center;
-    width: 95%;
-  }
-
-  .topicName {
-    margin: 0.6em;
-  }
-
-}
-
 /* Header Area */
 
 .headerAreaWrap {
@@ -97,16 +79,7 @@ h1, h2, h3, h4, h5, h6 {
   color: slategray;
 }
 
-@media only screen and (max-width: 770px) {
-  .mainTitle {
-    font-size: 2.5em;
-    text-align: center;
-  }
 
-  .headerAreaWrap {
-    padding: 0;
-  }
-}
 
 /* All articles / Homepage */
 
@@ -299,20 +272,7 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
 }
 
-@media only screen and (max-width: 770px) {
-  .textAreaInputBox {
-    flex-direction: column;
-  }
-  #textArea {
-    width: 85%;
-  }
-  #submitButton {
-    margin-top: 10px;
-    margin-left: 0em;
-    height: 3em;
-    width: 12em;
-  } 
-}
+
 
 /* User Profile */
 
@@ -383,22 +343,7 @@ line-height: 1.5em;
 margin: 0.2em;
 }
 
-@media only screen and (max-width: 770px) {
-  .userAreaWrap {
-    flex-direction: column;
-    align-items: center;
-  }
-  .userProfileArea {
-   width: 90%;
-   align-items: center;
-  }
-  .profileUsername, .profileName {
-    width: 50%;
-  }
-  .userArticles {
-    width: 90%;
-   }
-  }
+
 
 /* Not found */
 
@@ -419,3 +364,62 @@ margin: 0.2em;
   width: 10em;
 }
 
+@media only screen and (max-width: 980px) {
+  .userAreaWrap {
+    flex-direction: column;
+    align-items: center;
+  }
+  .userProfileArea {
+   width: 90%;
+   align-items: center;
+  }
+  .profileUsername, .profileName {
+    width: 50%;
+  }
+  .userArticles {
+    width: 90%;
+   }
+  }
+
+  @media only screen and (max-width: 980px) {
+    .textAreaInputBox {
+      flex-direction: column;
+    }
+    #textArea {
+      width: 85%;
+    }
+    #submitButton {
+      margin-top: 10px;
+      margin-left: 0em;
+      height: 3em;
+      width: 12em;
+    } 
+  }
+
+  @media only screen and (max-width: 980px) {
+    .mainTitle {
+      font-size: 2.5em;
+      text-align: center;
+    }
+  
+    .headerAreaWrap {
+      padding: 0;
+    }
+  }
+
+  @media only screen and (max-width: 980px) {
+    .topicAreaWrap {
+      flex-flow: row wrap;
+      justify-content: center;
+    }
+  
+    .topicTagsArea {
+      flex-direction: column;
+      align-items: center;
+      width: 95%;
+    }
+  
+    .topicName {
+      margin: 0.6em;
+    }
+  }

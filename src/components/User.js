@@ -28,10 +28,10 @@ class User extends React.Component {
    render() {
     return (
       <div className='userAreaWrap'>
-      <div className="userProfileArea">
-      <div className='imgWrap'>
-      <img src={this.state.user.avatar_url} className="userAvatar" alt="userAvatar"/>
-      </div>
+        <div className="userProfileArea">
+          <div className='imgWrap'>
+            <img src={this.state.user.avatar_url} className="userAvatar" alt="userAvatar"/>
+          </div>
         <div className="profileUsername">
           <p>user:</p>
           <p>{this.state.user.username}</p>
