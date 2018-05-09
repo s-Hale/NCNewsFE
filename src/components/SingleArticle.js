@@ -79,3 +79,4 @@ class SingleArticle extends React.Component {
 }
 
 export default SingleArticle;
+

@@ -44,8 +44,6 @@ class Articles extends Component {
     );
   }
 
-  //eslint properly, and install as dev dependency
-
    fetchArticlesByTopic = (topic) => {
     fetchArticles(topic).then(articles => {
       if (topic) {
