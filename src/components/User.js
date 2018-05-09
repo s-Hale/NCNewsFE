@@ -11,51 +11,54 @@ class User extends React.Component {
   componentDidMount() {
     const { username } = this.props.match.params;
     fetchUserInfo(username)
-    .then(body => {
-      if(body.user.username)
-      this.setState({ user: body.user });
-    })
-    .then(res => fetchArticles())
-    .then(res => {
-      let userArts = res.allArticles.filter(article => {
-       return article.created_by === username
-     })
-    this.setState({ userArticles: userArts });
-    })
-    .catch(err => (this.props.history.push('/404')))
-  } 
+      .then(body => {
+        if (body.user.username) this.setState({ user: body.user });
+      })
+      .then(res => fetchArticles())
+      .then(res => {
+        let userArts = res.allArticles.filter(article => {
+          return article.created_by === username;
+        });
+        this.setState({ userArticles: userArts });
+      })
+      .catch(err => this.props.history.push("/404"));
+  }
 
-   render() {
+  render() {
     return (
-      <div className='userAreaWrap'>
+      <div className="userAreaWrap">
         <div className="userProfileArea">
-          <div className='imgWrap'>
-            <img src={this.state.user.avatar_url} className="userAvatar" alt="userAvatar"/>
+          <div className="imgWrap">
+            <img
+              src={this.state.user.avatar_url}
+              className="userAvatar"
+              alt="userAvatar"
+            />
           </div>
-        <div className="profileUsername">
-          <p>user:</p>
-          <p>{this.state.user.username}</p>
+          <div className="profileUsername">
+            <p>user:</p>
+            <p>{this.state.user.username}</p>
+          </div>
+          <div className="profileName">
+            <p>name:</p>
+            <p>{this.state.user.name}</p>
+          </div>
         </div>
-        <div className="profileName">
-          <p>name:</p>
-          <p>{this.state.user.name}</p>
-        </div>
-      </div>
-      <div className='userArticles'>
-      <h2 className='byUser'>by this user:</h2>
+        <div className="userArticles">
+          <h2 className="byUser">by this user:</h2>
           {this.state.userArticles.map((article, i) => {
             return (
               <div className="indivUserArticle" key={i}>
                 <Link to={`/articles/${article._id}`}>
                   <h1 className="indivUserArticleTitle">{article.title}</h1>
-                  </Link>
-                  <div className="indivUserArticleSnippet">
-                    {article.body.substring(0, 50) + " ..."}
-                  </div>
+                </Link>
+                <div className="indivUserArticleSnippet">
+                  {article.body.substring(0, 50) + " ..."}
+                </div>
               </div>
-            )
+            );
           })}
-         </div>
+        </div>
       </div>
     );
   }

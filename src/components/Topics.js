@@ -9,18 +9,20 @@ class Topics extends React.Component {
 
   componentDidMount() {
     fetchTopics()
-    .then(body => {
-      this.setState({ topics: body.topics });
-    })
-    .catch(err => (this.props.history.push('/404')))
+      .then(body => {
+        this.setState({ topics: body.topics });
+      })
+      .catch(err => this.props.history.push("/404"));
   }
 
   render() {
     return (
       <div className="topicAreaWrap">
-          <h3 className="topicTitle">browse articles by topic</h3>
-          <div className='topicTagsArea'>
-          <Link className='topicName' to="/articles">All</Link>
+        <h3 className="topicTitle">browse articles by topic</h3>
+        <div className="topicTagsArea">
+          <Link className="topicName" to="/articles">
+            All
+          </Link>
           {this.state.topics.map((topic, i) => {
             return (
               <div key={i}>
@@ -30,7 +32,7 @@ class Topics extends React.Component {
               </div>
             );
           })}
-          </div>
+        </div>
       </div>
     );
   }

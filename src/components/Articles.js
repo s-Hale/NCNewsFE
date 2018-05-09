@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { fetchArticles } from "../api";
 import { Link } from "react-router-dom";
 
@@ -9,13 +9,13 @@ class Articles extends Component {
 
   componentDidMount() {
     let { topic } = this.props.match.params;
-    this.fetchArticlesByTopic(topic)
+    this.fetchArticlesByTopic(topic);
   }
 
   componentWillReceiveProps(newProps) {
     let { topic } = newProps.match.params;
-    this.fetchArticlesByTopic(topic)
- }
+    this.fetchArticlesByTopic(topic);
+  }
 
   render() {
     return (
@@ -26,12 +26,13 @@ class Articles extends Component {
               <div className="eachIndivArticle" key={i}>
                 <Link to={`/articles/${article._id}`}>
                   <h1 className="indivArticleTitle">{article.title}</h1>
-                  <div className='img-wrapper'>
-                  <img
-                    className="articleImgHomepage"
-                    src={article.imageURL}
-                    alt="imageofthings"
-                  /></div>
+                  <div className="img-wrapper">
+                    <img
+                      className="articleImgHomepage"
+                      src={article.imageURL}
+                      alt="imageofthings"
+                    />
+                  </div>
                   <div className="indivArticleSnippet">
                     {article.body.substring(0, 120) + " ..."}
                   </div>
@@ -44,19 +45,17 @@ class Articles extends Component {
     );
   }
 
-   fetchArticlesByTopic = (topic) => {
-    fetchArticles(topic).then(articles => {
-      if (topic) {
-        if(articles.articles)
-        this.setState({ articles: articles.articles });
-      } else  {
-        this.setState({ articles: articles.allArticles })
-      }
-    })
-    .catch(err => (this.props.history.push('/404')))
-  }
+  fetchArticlesByTopic = topic => {
+    fetchArticles(topic)
+      .then(articles => {
+        if (topic) {
+          if (articles.articles) this.setState({ articles: articles.articles });
+        } else {
+          this.setState({ articles: articles.allArticles });
+        }
+      })
+      .catch(err => this.props.history.push("/404"));
+  };
 }
-
-
 
 export default Articles;

@@ -15,13 +15,13 @@ class App extends Component {
         <div>
           <Header />
           <Switch>
-            <Route path="/topics/:topic/articles" component={Articles}/>
+            <Route path="/topics/:topic/articles" component={Articles} />
             <Route path="/articles/:article_id" component={SingleArticle} />
             <Route path="/articles" component={Articles} />
-            <Route path="/topics" render={() => (<Redirect to="/articles"/>)}/>
+            <Route path="/topics" render={() => <Redirect to="/articles" />} />
             <Route path="/comments" component={Comments} />
             <Route path="/users/:username" component={User} />
-            <Route exact path="/" render={() => (<Redirect to="/articles/"/>)}/>
+            <Route exact path="/" render={() => <Redirect to="/articles/" />} />
             <Route path="/*" component={NotFound} />
           </Switch>
           <div className="App" />
@@ -30,7 +30,5 @@ class App extends Component {
     );
   }
 }
-
-
 
 export default App;

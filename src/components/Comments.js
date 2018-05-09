@@ -1,5 +1,11 @@
 import React from "react";
-import { fetchComments, postComment, deleteComment, addVoteComment, downVoteComment } from "../api";
+import {
+  fetchComments,
+  postComment,
+  deleteComment,
+  addVoteComment,
+  downVoteComment
+} from "../api";
 import { Link } from "react-router-dom";
 import { filterComments, alterVote } from "../stateupdaters.js";
 
@@ -12,13 +18,12 @@ class Comments extends React.Component {
   componentWillReceiveProps(articleID) {
     if (articleID)
       fetchComments(articleID.articleID)
-      //fix this, send correct info from res
-      .then(comments => {
-        this.setState({
-          comments: comments.sort(this.handleSortComments)
-        });
-      })
-      .catch(err => (this.props.history.push('/404')))
+        .then(comments => {
+          this.setState({
+            comments: comments.sort(this.handleSortComments)
+          });
+        })
+        .catch(err => this.props.history.push("/404"));
   }
 
   handleComment = event => {
@@ -48,7 +53,7 @@ class Comments extends React.Component {
   handleDeleteComment = event => {
     let commentID = event.target.id;
     this.setState({
-      comments: filterComments(this.state.comments, commentID) 
+      comments: filterComments(this.state.comments, commentID)
     });
     deleteComment(commentID);
   };
@@ -73,7 +78,13 @@ class Comments extends React.Component {
     return (
       <div className="commentArea">
         <div className="textAreaInputBox">
-          <textarea placeholder="add your comment" className="newCommentInput" id="textArea" onChange={this.handleComment} value={this.state.inputComment}/>
+          <textarea
+            placeholder="add your comment"
+            className="newCommentInput"
+            id="textArea"
+            onChange={this.handleComment}
+            value={this.state.inputComment}
+          />
           <button id="submitButton" onClick={this.handlePostComment}>
             submit
           </button>
@@ -85,12 +96,25 @@ class Comments extends React.Component {
               <Link id="commentUsername" to={`/users/${comment.created_by}`}>
                 <p className="indivCommentAuthor">{comment.created_by}</p>
               </Link>
-              <i onClick={this.handleUpVoteComment} id={comment._id} className="fa fa-arrow-up commentArrows upArrow"/>
-              <i onClick={this.handleDownVoteComment} id={comment._id} className="fa fa-arrow-down commentArrows downArrow" />
+              <i
+                onClick={this.handleUpVoteComment}
+                id={comment._id}
+                className="fa fa-arrow-up commentArrows upArrow"
+              />
+              <i
+                onClick={this.handleDownVoteComment}
+                id={comment._id}
+                className="fa fa-arrow-down commentArrows downArrow"
+              />
               <div className="xWrapper">
                 <p>{comment.votes}</p>
                 {comment.created_by === "northcoder" && (
-                  <i onClick={this.handleDeleteComment} id={comment._id} className="fa fa-times deleteCommentX" title="delete your comment?" />
+                  <i
+                    onClick={this.handleDeleteComment}
+                    id={comment._id}
+                    className="fa fa-times deleteCommentX"
+                    title="delete your comment?"
+                  />
                 )}
               </div>
             </div>
